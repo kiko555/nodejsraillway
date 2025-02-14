@@ -30,7 +30,7 @@ app.post('/OrderInitial.aspx', async (req, res) => {
     };
     
     try {
-        const callbackResponse = await axios.post('https://stage.comicrevive.com', responseData, {
+        const callbackResponse = await axios.post('https://stage.comicrevive.com/line_cathaypay_callback', responseData, {
             headers: {
                 'Content-Type': 'application/json'
             }
