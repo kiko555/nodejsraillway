@@ -28,6 +28,17 @@ app.post('/OrderInitial.aspx', (req, res) => {
         "strOrderInfo": "<?xml version='1.0' encoding='UTF-8'?><CUBXML><CAVALUE>eea326620371ca56d71bf4a65bef9e9e</CAVALUE><ORDERINFO><STOREID>250700008</STOREID><ORDERNUMBER>122A23083084</ORDERNUMBER></ORDERINFO></CUBXML>"
     };
     
+    try {
+        const callbackResponse = await axios.post('https://stage.comicrevive.com', responseData, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Callback response:', callbackResponse.data);
+    } catch (error) {
+        console.error('Error in callback:', error.message);
+    }
+    
     res.json(responseData);
 });
 
