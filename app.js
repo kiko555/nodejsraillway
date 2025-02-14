@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 
 const app = express();
@@ -18,7 +17,7 @@ const PORT = 3000;
 //   });
 
 // Middleware to parse JSON body
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.post('/api/response', (req, res) => {
     console.log('Received POST request:', req.body);
