@@ -30,17 +30,28 @@ app.post('/OrderInitial.aspx', async (req, res) => {
     };
     
     try {
-        const callbackResponse = await axios.post('https://stage.comicrevive.com/line_cathaypay_callback', responseData, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        console.log('Callback response:', callbackResponse.data);
+        // const callbackResponse = await axios.post('https://stage.comicrevive.com', responseData, {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // });
+        // console.log('Callback response:', callbackResponse.data);
+        
+        // Redirect using a POST request
+        res.setHeader('Content-Type', 'text/html');
+        res.send(`
+            <html>
+                <body onload="document.forms[0].submit()">
+                    <form method="POST" action="https://stage.comicrevive.com/line_cathaypay_callback">
+                        <input type="hidden" name="data" value='${JSON.stringify(responseData)}'>
+                    </form>
+                </body>
+            </html>
+        `);
     } catch (error) {
         console.error('Error in callback:', error.message);
+        res.status(500).send('Error processing request');
     }
-    
-    res.json(responseData);
 });
 
 app.listen(PORT, () => {
