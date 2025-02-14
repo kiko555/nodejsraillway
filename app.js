@@ -1,6 +1,7 @@
 const express = require('express');
-const path = require('path');
-const indexRouter = require('./routes/index');
+const axios = require('axios');
+// const path = require('path');
+// const indexRouter = require('./routes/index');
 
 const app = express();
 const PORT = 3000;
@@ -19,7 +20,7 @@ const PORT = 3000;
 // Middleware to parse JSON body
 app.use(express.json());
 
-app.post('/OrderInitial.aspx', (req, res) => {
+app.post('/OrderInitial.aspx', async (req, res) => {
     console.log('Received POST request:', req.body);
     
     const responseData = {
@@ -43,5 +44,6 @@ app.post('/OrderInitial.aspx', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
+
