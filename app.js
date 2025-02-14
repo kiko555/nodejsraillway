@@ -17,19 +17,19 @@ app.post('/OrderInitial.aspx', async (req, res) => {
     };
     
     try {
-        const callbackResponse = await axios.post('https://stage.comicrevive.com', responseData, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        console.log('Callback response:', callbackResponse.data);
+        // const callbackResponse = await axios.post('https://stage.comicrevive.com', responseData, {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // });
+        // console.log('Callback response:', callbackResponse.data);
         
         // Redirect using a POST request
         res.setHeader('Content-Type', 'text/html');
         res.send(`
             <html>
                 <body onload="document.forms[0].submit()">
-                    <form method="POST" action="https://stage.comicrevive.com">
+                    <form method="POST" action="https://stage.comicrevive.com/line_cathaypay_callback">
                         <input type="hidden" name="strRsXML" value='${responseData.strRsXML.replace(/'/g, '&apos;')}'>
                         <input type="hidden" name="strRsJSON" value='${responseData.strRsJSON}'>
                         <input type="hidden" name="strOrderInfo" value='${responseData.strOrderInfo.replace(/'/g, '&apos;')}'>
