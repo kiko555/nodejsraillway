@@ -19,7 +19,7 @@ const PORT = 3000;
 // Middleware to parse JSON body
 app.use(express.json());
 
-app.post('/api/response', (req, res) => {
+app.post('/OrderInitial.aspx', (req, res) => {
     console.log('Received POST request:', req.body);
     
     const responseData = {
