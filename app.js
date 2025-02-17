@@ -29,7 +29,7 @@ app.post('/OrderInitial.aspx', async (req, res) => {
         res.send(`
             <html>
                 <body onload="document.forms[0].submit()">
-                    <form method="POST" action="https://stage.comicrevive.com/line_cathaypay_callback">
+                    <form method="POST" action="https://stage.comicrevive.com/line_cathaypay_callback2nd">
                         <input type="hidden" name="strRsXML" value='${responseData.strRsXML.replace(/'/g, '&apos;')}'>
                         <input type="hidden" name="strRsJSON" value='${responseData.strRsJSON}'>
                         <input type="hidden" name="strOrderInfo" value='${responseData.strOrderInfo.replace(/'/g, '&apos;')}'>
